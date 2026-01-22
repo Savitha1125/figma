@@ -8,6 +8,8 @@ import whatsapp from "./assets/whatsapp-logo.png";
 import email from "./assets/Gmail_icon.png";
 import image from "./assets/image1.png"
 import image1 from "./assets/Mask group.png"
+import image2 from "./assets/Mask group (1).png"
+import image3 from "./assets/Mask group (3).png"
 import { FaBars, FaTimes } from "react-icons/fa";
 
 export default function Navbar() {
@@ -16,7 +18,7 @@ export default function Navbar() {
   return (
     <>
       {/* FIXED NAVBAR */}
-      <div className="fixed top-0 left-0 w-full z-50 bg-white">
+      <div className="fixed top-0 left-0 w-full z-1000 bg-white">
         {/* TOP BAR */}
         <div className="container mx-auto px-4 sm:px-6 md:px-6 py-2 flex flex-col sm:flex-row md:flex-row justify-between items-center">
           {/* Left: Social + Careers */}
@@ -131,7 +133,7 @@ export default function Navbar() {
       </div>
 
       {/* RIGHT MAIN IMAGE */}
-      <div className="md:w-[80%] flex justify-end">
+      <div className="md:w-[80%] flex justify-end -z-10">
         <img
           src={image}
           alt="Hero Illustration"
@@ -144,26 +146,47 @@ export default function Navbar() {
 </div>
 <div className="max-w-6xl mx-auto px-4 py-12 font-opensans">
   {/* Heading: CENTER */}
-  <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 text-center">
-    Nschool Acadamy’s <span className="text-orange-500">Placement Partners</span>
+  <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mt-5 text-center">
+    Nschool Acadamy’s <span className="text-[#F17424]">Placement Partners</span>
   </h2>
 
   {/* Paragraph: LEFT under heading */}
-  <p className="text-[10px] md:text-[11px] lg:text-[13px] text-gray-600 mb-8 text-left pr-10 -ml-4 max-w-[86%]">
-  There are many variations of passages of Lorem Ipsum available, but the majority have suffered 
-  alteration in some form, by injected humour, or randomised words. There are many variations of 
-  passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by 
-  injected humour.
-</p>
+  <div className="text-[10px] md:text-[11px] lg:text-[18px] text-gray-600 mb-8 w-full
+                pl-6 pr-10
+                ml-0 lg:-mr-6 xl:-translate-x-16">
+  <p className="text-left lg:text-justify md:ml-5 mt-4">
+    There are many variations of passages of Lorem Ipsum available, but the majority have suffered 
+    alteration in some form, by injected humour, or randomised words.
+    There are many variations of passages of Lorem Ipsum available, but the majority 
+  </p>
+  <p className="text-center">
+    Have suffered alteration in some form, by injected humour.
+  </p>
+</div>
+
 
   {/* Logos */}
-  <div className="flex flex-wrap justify-center items-center gap-6">
-    <img src="/logo-facebook.png" alt="Facebook" className="h-8 md:h-10 lg:h-12" />
-    <img src="/logo-google.png" alt="Google" className="h-8 md:h-10 lg:h-12" />
-    <img src="/logo-directi.png" alt="Directi" className="h-8 md:h-10 lg:h-12" />
-    <img src="/logo-netflix.png" alt="Netflix" className="h-8 md:h-10 lg:h-12" />
-    <img src="/logo-amazon.png" alt="Amazon" className="h-8 md:h-10 lg:h-12" />
-  </div>
+  <div className="flex flex-wrap md:flex-nowrap justify-center items-center gap-6 sm:gap-1 md:gap-8 md:pl-14 md:pr-18 pl-5 lg:pl-10 lg:pr-30 lg:gap-8 xl:-translate-x-20 z-100">
+  <img src={image2} alt="Facebook" className="h-8 md:h-10 lg:h-12" />
+</div>
+<img
+  src={image3}
+  alt="bg shape"
+  className="
+    absolute
+    right-0
+    top-220          /* mobile default: bottom corner */
+    w-16              /* mobile width */
+    md:w-[90px]       /* medium screens */
+    lg:w-[120px]      /* large screens */
+    xl:w-[120px]      /* extra large screens */
+    xl:top-[56%]
+    2xl:top-[10%]
+    sm:mt-[10%]
+    md:top-120 
+    -z-0
+  "
+/>
 </div>
 
 
