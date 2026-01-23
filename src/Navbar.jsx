@@ -121,7 +121,7 @@ export default function Navbar() {
 
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#F17424] mt-3">
           Nschool Academy
-        </h2>
+        </h2><br/>
 
         <p className="text-gray-600 mt-5 max-w-md">
           Lorem Ipsum is simply dummy text of the printing and typesetting industry
