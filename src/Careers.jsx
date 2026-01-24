@@ -10,7 +10,7 @@ const sampleVideo = "https://www.w3schools.com/html/mov_bbb.mp4";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import faqIllustration from "./assets/faq-illustration.png";
 
-const data = [
+const testimonials = [
   {
     name: "Cameron Williamson",
     role: "UI/UX Designer, Nschool",
@@ -64,11 +64,15 @@ const faqData = [
   }
 ];
 export default function Careers() {
-  const [index, setIndex] = useState(0);
+ const [index, setIndex] = useState(0);
+const [storyIndex, setStoryIndex] = useState(0);
 
-  const prev = () => setIndex((p) => (p === 0 ? data.length - 1 : p - 1));
-  const next = () => setIndex((p) => (p === data.length - 1 ? 0 : p + 1));
-  const [storyIndex, setStoryIndex] = useState(0);
+  const prev = () =>
+    setIndex((p) => (p === 0 ? testimonials.length - 1 : p - 1));
+
+  const next = () =>
+    setIndex((p) => (p === testimonials.length - 1 ? 0 : p + 1));
+
 
 // cards per view based on screen (tailwind breakpoints match)
 const [cardsPerView, setCardsPerView] = useState(3);
@@ -181,62 +185,107 @@ const [openIndex, setOpenIndex] = useState(1);
   </div>
 </section>
 
-<section className="py-24">
-  <div className="container mx-auto px-6 md:px-10">
-    <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-12 relative">
+<section className="relative py-28 bg-[#F8FAFC] overflow-hidden">
+      <div className="container mx-auto px-6 md:px-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-20">
 
-      {/* LEFT: BLUE CARD WITH OUTSIDE CORNER IMAGE */}
-      <div className="flex justify-center lg:justify-start relative">
-        {/* Card */}
-        <div className="relative w-full max-w-[360px] rounded-2xl bg-[#1A4B84] text-white p-6 sm:p-8 overflow-hidden">
-          
-          <img src={quote} alt="quote" className="w-10 mb-4" />
-          <p className="text-sm leading-6 opacity-90">
-            {data[index].text}
-          </p>
+          {/* LEFT SIDE – CARDS */}
+          <div className="relative flex justify-center lg:justify-start">
 
-          <div className="flex items-center gap-4 mt-6">
-            <img
-              src={data[index].avatar}
-              alt={data[index].name}
-              className="w-12 h-12 rounded-full object-cover"
+            {/* ORANGE CARD – LEFT CORNER */}
+            <div
+              className="
+                hidden lg:block
+                absolute
+                left-[-140px]
+                top-16
+                w-[300px]
+                h-[380px]
+                bg-[#F17424]
+                rounded-2xl
+                z-0
+              "
             />
-            <div>
-              <p className="font-semibold">{data[index].name}</p>
-              <p className="text-xs opacity-80">{data[index].role}</p>
+
+            {/* BLUE CARD */}
+            <div
+              className="
+                relative
+                w-full
+                max-w-[380px]
+                bg-[#1A4B84]
+                text-white
+                p-8
+                rounded-2xl
+                shadow-xl
+                z-10
+                transition-transform
+                duration-500
+              "
+            >
+              <img src={quote} alt="quote" className="w-10 mb-4" />
+
+              <p className="text-sm leading-7 opacity-90">
+                {testimonials[index].text}
+              </p>
+
+              <div className="flex items-center gap-4 mt-6">
+                <img
+                  src={testimonials[index].avatar}
+                  alt="user"
+                  className="w-12 h-12 rounded-full object-cover"
+                />
+                <div>
+                  <p className="font-semibold text-sm">
+                    {testimonials[index].name}
+                  </p>
+                  <p className="text-xs opacity-80">
+                    {testimonials[index].role}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* ARROWS */}
+            <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 flex gap-4">
+              <button
+                onClick={prev}
+                className="w-11 h-11 rounded-full bg-orange-100 flex items-center justify-center hover:bg-orange-200 transition shadow"
+              >
+                <FiChevronLeft className="text-xl text-blue-900" />
+              </button>
+
+              <button
+                onClick={next}
+                className="w-11 h-11 rounded-full bg-orange-100 flex items-center justify-center hover:bg-orange-200 transition shadow"
+              >
+                <FiChevronRight className="text-xl text-blue-900" />
+              </button>
             </div>
           </div>
+
+          {/* RIGHT SIDE – TEXT */}
+          <div className="text-center lg:text-left">
+            <p className="text-[#1A3A6E] text-2xl font-semibold">
+              Testimonials
+            </p>
+
+            <h2 className="text-4xl sm:text-5xl font-bold mt-4 leading-tight">
+              <span className="text-[#F17424]">What Students Say</span>
+              <br />
+              <span className="text-[#1A3A6E]">About Us</span>
+            </h2>
+
+            <p className="text-gray-600 mt-6 max-w-lg mx-auto lg:mx-0">
+              There are many variations of passages of Lorem Ipsum available,
+              but the majority have suffered alteration in some form.
+            </p>
+          </div>
+
         </div>
-
-        {/* Corner image OUTSIDE the card */}
-        <img
-          src={cornerShape}
-          alt="corner"
-          className="absolute -top-2 sm:-top-4 left-1 sm:left-[60%] w-16 sm:w-20 xl:w-24"
-        />
       </div>
+    </section>
 
-      {/* RIGHT: TEXT CONTENT */}
-      <div>
-        <p className="text-[#1A3A6E] text-2xl sm:text-3xl font-semibold text-center lg:text-left">
-          Testimonials
-        </p>
-
-        <h2 className="text-3xl sm:text-4xl font-bold mt-2 leading-tight text-center lg:text-left">
-          <span className="text-[#F17424]">What Students Say</span>
-          <br />
-          <span className="text-[#1A3A6E]">About Us</span>
-        </h2>
-
-        <p className="text-gray-600 mt-5 max-w-lg text-center lg:text-left mx-auto lg:mx-0">
-          There are many variations of passages of Lorem Ipsum available,
-          but the majority have suffered alteration in some form.
-        </p>
-      </div>
-
-    </div>
-  </div>
-</section>
 {/* PLACEMENT STORIES */}
       <section className="bg-[#1A4B84] py-16 px-4 overflow-hidden">
         <div className="container mx-auto">
@@ -338,11 +387,11 @@ const [openIndex, setOpenIndex] = useState(1);
         src={shape} 
         alt="" 
         className="absolute right-0
-    top-220          /* mobile default: bottom corner */
-    w-16              /* mobile width */
-    md:w-[90px]       /* medium screens */
-    lg:w-[120px]      /* large screens */
-    xl:w-[120px]      /* extra large screens */
+    top-220          
+    w-16              
+    md:w-[90px]      
+    lg:w-[120px]     
+    xl:w-[120px]      
     xl:top-[50%]
     2xl:top-[10%]
     sm:mt-[10%]

@@ -9,6 +9,7 @@ import cornerTL from "./assets/Ellipse-topleft.png";
 import cornerTR from "./assets/Ellipse-topright.png";
 import cornerBL from "./assets/Ellipse-bottomleft.png";
 import cornerBR from "./assets/Ellipse-bottomright.png";
+import { Link } from "react-router-dom";
 
 export default function Course() {
 
@@ -88,12 +89,14 @@ export default function Course() {
         <div className="max-w-6xl mx-auto relative z-10">
           <div className="p-2 md:p-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+              <Link to="/fullstack">
               <CourseCard
                 icon={fullstack}
                 title="Full Stack Development"
                 tags={["HTML", "CSS", "Bootstrap", "Javascript", "React JS", "Express JS", "Node", "Live Projects"]}
               />
-
+              </Link>
+              <Link to="/flutter">
               <CourseCard
                 icon={flutter}
                 title="Flutter Development"
@@ -107,13 +110,15 @@ export default function Course() {
                   "Third Party Integration",
                 ]}
               />
-
+              </Link>
+                <Link to="/python">
               <CourseCard
                 icon={python}
                 title="Python Development"
                 tags={["HTML", "CSS", "Javascript", "Python", "Django", "MySQL", "Live Projects"]}
               />
-
+              </Link>
+              <Link to="/digital">
               <CourseCard
                 icon={digital}
                 title="Digital Marketing"
@@ -128,6 +133,7 @@ export default function Course() {
                   "Email Marketing",
                 ]}
               />
+              </Link>
             </div>
           </div>
         </div>
