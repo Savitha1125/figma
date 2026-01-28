@@ -24,9 +24,9 @@ export default function Navbar() {
       {/* FIXED NAVBAR */}
       <div className="fixed top-0 left-0 w-full z-1000 bg-white">
         {/* TOP BAR */}
-        <div className="container mx-auto px-4 sm:px-6 md:px-6 py-2 flex flex-col sm:flex-row md:flex-row justify-between items-center">
+        <div className="max-w-6xl mx-auto py-2 flex flex-col sm:flex-row md:flex-row justify-between border-gray-300 items-center border-b">
           {/* Left: Social + Careers */}
-          <div className="flex items-center gap-4 sm:pl-6 md:pl-9">
+          <div className="flex items-center gap-4">
             <div className="flex items-center gap-2">
               {[facebook, insta, linkedin, ytube, twitter].map((icon, idx) => (
                 <div
@@ -42,7 +42,7 @@ export default function Navbar() {
           </div>
 
           {/* Right: Email + WhatsApp */}
-          <div className="flex flex-col sm:flex-row md:flex-row items-center gap-2 sm:gap-4 md:gap-5 mt-2 sm:mt-0 md:pl-10 md:pr-8 sm:pl-0 md:pl-0 ml-auto">
+          <div className="flex flex-col sm:flex-row md:flex-row items-center gap-2 sm:gap-4 md:gap-5 mt-2 sm:mt-0 ml-auto">
             <div className="flex items-center gap-2 justify-end">
               <img src={email} alt="Email" className="w-4 h-4" />
               <span className="text-sm sm:text-base">contact@n-school.com</span>
