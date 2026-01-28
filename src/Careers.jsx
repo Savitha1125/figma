@@ -5,7 +5,7 @@ import shape from  "./assets/brown-right.png"
 import quote from "./assets/quote.png";
 import cornerShape from "./assets/cloudright.png"
 import user from "./assets/user.png"
-import { FaPlay } from "react-icons/fa"; 
+import { FaPlay } from "react-icons/fa";
 const sampleVideo = "https://www.w3schools.com/html/mov_bbb.mp4";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import faqIllustration from "./assets/faq-illustration.png";
@@ -27,11 +27,11 @@ const testimonials = [
   },
 ]
 
-const storyData = [ { id: 1, name: "Charlotte", desc: "Passages Of Lorem Ipsum" }, 
-      { id: 2, name: "Charlotte", desc: "Passages Of Lorem Ipsum" }, 
-      { id: 3, name: "Charlotte", desc: "Passages Of Lorem Ipsum" }, 
-      { id: 4, name: "Charlotte", desc: "Passages Of Lorem Ipsum" }, 
-      { id: 5, name: "Charlotte", desc: "Passages Of Lorem Ipsum" }, 
+const storyData = [ { id: 1, name: "Charlotte", desc: "Passages Of Lorem Ipsum" },
+      { id: 2, name: "Charlotte", desc: "Passages Of Lorem Ipsum" },
+      { id: 3, name: "Charlotte", desc: "Passages Of Lorem Ipsum" },
+      { id: 4, name: "Charlotte", desc: "Passages Of Lorem Ipsum" },
+      { id: 5, name: "Charlotte", desc: "Passages Of Lorem Ipsum" },
       { id: 6, name: "Charlotte", desc: "Passages Of Lorem Ipsum" }, ];
 const faqData = [
   {
@@ -72,7 +72,6 @@ const [storyIndex, setStoryIndex] = useState(0);
 
   const next = () =>
     setIndex((p) => (p === testimonials.length - 1 ? 0 : p + 1));
-
 
 // cards per view based on screen (tailwind breakpoints match)
 const [cardsPerView, setCardsPerView] = useState(3);
@@ -130,15 +129,15 @@ const [openIndex, setOpenIndex] = useState(1);
           </p>
 
           <p className="text-gray-600 mt-4 max-w-lg lg:text-[18px]">
-            By injected humour, or randomised words There are <br/>many variations of passages of Lorem 
-            Ipsum available,But the majority have suffered alteration in some form, By injected 
+            By injected humour, or randomised words There are <br/>many variations of passages of Lorem
+            Ipsum available,But the majority have suffered alteration in some form, By injected
             humour,But the majority have suffered alteration <br/>in some form,
           </p>
 
         </div>
       </div>
     </section>
-     
+
      <section className="relative overflow-visible py-0">
 
   {/* RIGHT CORNER SHAPE – TOUCHES SCREEN END */}
@@ -364,11 +363,11 @@ const [openIndex, setOpenIndex] = useState(1);
 </section>
 
 <section className="relative py-20 overflow-hidden">
-      
+
       {/* BACKGROUND DECORATIONS */}
       {/* Light gray cloud on the left */}
       <img
-          src={cornerShape}   
+          src={cornerShape}
           alt="bg shape"
           className="
             absolute
@@ -383,32 +382,32 @@ const [openIndex, setOpenIndex] = useState(1);
           "
         />
       {/* Light orange/peach cloud on the right */}
-      <img 
-        src={shape} 
-        alt="" 
+      <img
+        src={shape}
+        alt=""
         className="absolute right-0
-    top-220          
-    w-16              
-    md:w-[90px]      
-    lg:w-[120px]     
-    xl:w-[120px]      
+    top-220
+    w-16
+    md:w-[90px]
+    lg:w-[120px]
+    xl:w-[120px]
     xl:top-[50%]
     2xl:top-[10%]
     sm:mt-[10%]
-    md:top-120 
-    -z-0" 
+    md:top-120
+    -z-0"
       />
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          
+
           {/* LEFT SIDE: ILLUSTRATION */}
           <div className="flex justify-center lg:justify-start">
             <div className="relative">
-              <img 
-                src={faqIllustration} 
-                alt="FAQ Illustration" 
-                className="w-full max-w-[500px] relative z-10" 
+              <img
+                src={faqIllustration}
+                alt="FAQ Illustration"
+                className="w-full max-w-[500px] relative z-10"
               />
               {/* Subtle orange glow behind the image */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-orange-100/50 rounded-full blur-3xl -z-10" />
@@ -418,7 +417,7 @@ const [openIndex, setOpenIndex] = useState(1);
           {/* RIGHT SIDE: ACCORDION */}
           <div>
             <h2 className="text-[#F17424] text-5xl font-bold mb-10">FAQ</h2>
-            
+
             <div className="space-y-2">
               {faqData.map((item, index) => (
                 <div key={index} className="border-b border-gray-200 max-w-[85%] mx-auto">
@@ -433,9 +432,9 @@ const [openIndex, setOpenIndex] = useState(1);
                       {openIndex === index ? "−" : "+"}
                     </span>
                   </button>
-                  
+
                   {/* Expandable Content */}
-                  <div 
+                  <div
                     className={`overflow-hidden transition-all duration-300 ease-in-out ${
                       openIndex === index ? "max-h-40 pb-5" : "max-h-0"
                     }`}
