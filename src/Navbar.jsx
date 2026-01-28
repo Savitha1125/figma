@@ -6,11 +6,18 @@ import ytube from "./assets/Vector (5).png";
 import twitter from "./assets/Vector (1).png";
 import whatsapp from "./assets/whatsapp-logo.png";
 import email from "./assets/Gmail_icon.png";
-
+import { Link } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const links = [
+    { name: "Home", to: "/" },
+    { name: "Courses", to: "/courses" },
+    { name: "Careers", to: "/careerpage" },
+    { name: "Blog", to: "/blogpage" },
+    { name: "Contact", to: "/contact" },
+  ];
 
   return (
     <>
@@ -31,7 +38,7 @@ export default function Navbar() {
               ))}
             </div>
             <span className="text-gray-500">|</span>
-            <span className="text-gray-500 font-normal cursor-pointer">Careers</span>
+            <Link to='/careerpage' className="text-gray-500 font-normal cursor-pointer">Careers</Link>
           </div>
 
           {/* Right: Email + WhatsApp */}
@@ -55,11 +62,18 @@ export default function Navbar() {
             <span className="text-md tracking-widest text-[#19467E] pl-2 sm:pl-6 md:pl-10">Academy</span>
           </div>
           {/* Menu RIGHT */}
-          <ul className="hidden md:flex gap-6 text-gray-700 text-sm sm:text-base pr-4 sm:pr-6 md:pr-10">
-            {["Home", "Courses", "Careers", "Blog", "Contact"].map((item, idx) => (
-              <li key={idx} className="hover:text-[#f17424] cursor-pointer">{item}</li>
-            ))}
-          </ul>
+         <ul className="hidden md:flex gap-6 text-gray-700 text-sm sm:text-base pr-4 sm:pr-6 md:pr-10">
+      {links.map((link, idx) => (
+        <li key={idx}>
+          <Link
+            to={link.to} // Use React Router Link
+            className="hover:text-[#f17424] cursor-pointer"
+          >
+            {link.name}
+          </Link>
+        </li>
+      ))}
+    </ul>
 
           {/* MOBILE MENU BUTTON */}
           <div className="md:hidden">

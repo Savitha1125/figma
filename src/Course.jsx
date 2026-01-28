@@ -30,7 +30,7 @@ export default function Course() {
 
       {/* content: LEFT icon centered + RIGHT content */}
       <div className="h-full flex items-center relative z-10">
-        <div className="w-[140px] flex justify-center items-center">
+        <div className="w-[190px] flex justify-center items-center">
           <div className="w-20 h-20 bg-orange-100 rounded-full flex items-center justify-center">
             <img src={icon} alt={title} className="w-10" />
           </div>

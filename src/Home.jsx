@@ -1,6 +1,6 @@
 import React from 'react'
 import image from "./assets/image1.png"
-import image1 from "./assets/Mask group.png"
+import image1 from "./assets/Maskgroup.png"
 import image2 from "./assets/Mask group (1).png"
 import image3 from "./assets/Mask group (3).png"
 export default function Home () {
