@@ -1,139 +1,234 @@
+import leftImg from "./assets/Mask group.png"
+import rightImg from "./assets/Mask group (3).png"
+import {  useState } from "react"
 import Footer from "./Footer";
-import image from "./assets/maskgroup.png"
-import image from "./assets/Mask group (3).png"
 
 export default function Contact() {
+   const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    mobile: "",
+    course: "",
+    message: "",
+  });
+
+  const [errors, setErrors] = useState({});
+  const [success, setSuccess] = useState(false);
+
+  // Handle input changes
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  // Validate form fields
+  const validate = () => {
+    const newErrors = {};
+    if (!formData.name.trim()) newErrors.name = "Name is required";
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required";
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = "Email is invalid";
+    }
+    if (!formData.mobile.trim()) {
+      newErrors.mobile = "Mobile number is required";
+    } else if (!/^\d{10}$/.test(formData.mobile)) {
+      newErrors.mobile = "Mobile number must be 10 digits";
+    }
+    if (!formData.course.trim()) newErrors.course = "Course is required";
+    if (!formData.message.trim()) newErrors.message = "Message is required";
+    return newErrors;
+  };
+
+  // Handle form submit
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const validationErrors = validate();
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      setSuccess(false);
+    } else {
+      setErrors({});
+      setSuccess(true);
+
+      // Here you can send `formData` to your backend API if needed
+      console.log("Form submitted successfully:", formData);
+
+      // Reset form
+      setFormData({
+        name: "",
+        email: "",
+        mobile: "",
+        course: "",
+        message: "",
+      });
+    }
+  };
   return (
     <>
-    <div className="relative overflow-hidden max-w-6xl m-auto xl:ml-18">
-      
-      <section className="relative max-w-6xl mx-auto px-6 sm:px-9 py-12 overflow-visible">
-              {/* Decorative Left Image */}
-              <img
-                src={image}
-                className="absolute left-0 sm:-left-12 md:-left-24 bottom-0 xl:bottom-84 w-16 sm:w-20 md:w-[90px] -z-0"
-              />
-      
-              {/* Decorative Right Image */}
-              <img
-                src={cloudright}
-                className="absolute right-0 sm:-right-12 md:-right-24 bottom-0 xl:bottom-84 w-16 sm:w-20 md:w-[90px] xl:w-25 -z-0"
-              />
-      </section>
-      {/* RIGHT CORNER SHAPE */}
-      <div className="absolute right-0 top-10 w-56 h-56 -z-10 "></div>
+    <section className="relative py-16 sm:py-20 lg:py-0 overflow-hidden">
+      {/* Corner Images */}
+      <img
+        src={leftImg}
+        alt="left corner"
+        className="absolute top-50 left-0 w-32 sm:w-48 md:w-64 lg:w-20 pointer-events-none opacity-40"
+      />
+      <img
+        src={rightImg}
+        alt="right corner"
+        className="absolute top-[40%] right-0 w-32 sm:w-10 md:w-14 lg:w-25 pointer-events-none opacity-40"
+      />
 
-      <div className="max-w-6xl mx-auto py-16 ">
-        <div className="grid md:grid-cols-2 gap-10 p-8 rounded-lg">
+      {/* Main Container */}
+    <div className="mx-auto px-4 sm:px-6 lg:px-6 
+                mt-36 lg:mt-40 
+                mb-16 xl:mb-24 
+                max-w-[1200px]">
+
+        {/* Two Columns: Contact Info + Form */}
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-16">
           
-          {/* LEFT CONTENT */}
-          <div className="py-20">
-           <h3 className="text-4xl font-semibold mb-4">
-              Get in <span className="text-orange-500">Touch</span>
-            </h3>
+          {/* Left: Contact Info */}
+          <div className="flex-1 space-y-6">
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#F17424]">
+              Get in <span className="text-[#19467E]">Touch</span>
+            </h2>
 
-            <div className="space-y-6 text-[20px] text-gray-700 pt-10">
-              <div>
-                <h4 className="font-semibold">Coimbatore</h4>
-                <p>InterviewBit Technologies Private Limited</p>
-                <p>9th Floor, Sakti Statesman</p>
-                <p>GreenGlen Layout, Behind Iblur Lake</p>
-                <p>Bellandur, Bangalore-09</p>
-              </div>
+            {/* Coimbatore */}
+            <div>
+              <h3 className="font-semibold text-lg text-gray-800">Coimbatore</h3>
+              <p className="text-gray-500 text-sm">
+                InterviewBit Technologies Private Limited<br />
+                9th Floor, Sakti Statesman<br />
+                GreenGlen Layout, Behind Iblur Lake<br />
+                Bellandur, Bangalore-09
+              </p>
+            </div>
 
-              <div className="text-[20px]">
-                <h4 className="font-semibold">Phone Number</h4>
-                <p>+91 99 88 77 66 55</p>
-                <p>+91 11 22 33 44 55</p>
-              </div>
+            {/* Phone Number */}
+            <div>
+              <h3 className="font-semibold text-lg text-gray-800">Phone Number</h3>
+              <p className="text-gray-500 text-sm">
+                +91 99 88 77 66 55<br />
+                +91 11 22 33 44 55
+              </p>
+            </div>
 
-              <div className="text-[18px]">
-                <h4 className="font-semibold ">Gobichettipalayam</h4>
-                <p>InterviewBit Technologies Private Limited</p>
-                <p>9th Floor, Sakti Statesman</p>
-                <p>GreenGlen Layout, Behind Iblur Lake</p>
-                <p>Bellandur, Bangalore-09</p>
-              </div>
+            {/* Gobichettipalayam */}
+            <div>
+              <h3 className="font-semibold text-lg text-gray-800">Gobichettipalayam</h3>
+              <p className="text-gray-500 text-sm">
+                InterviewBit Technologies Private Limited<br />
+                9th Floor, Sakti Statesman<br />
+                GreenGlen Layout, Behind Iblur Lake<br />
+                Bellandur, Bangalore-09
+              </p>
             </div>
           </div>
 
-          {/* RIGHT FORM */}
-          <div className="bg-[#f7fbfc] p-18 px-6 py-1.5 mt-20 mb-20">
-            <h3 className="text-lg font-semibold mt-6">
-              Get in <span className="text-orange-500">Touch</span>
-            </h3>
+         {/* Right: Contact Form */}
+          <div className="flex-1 bg-[#F5F9FF] p-6 sm:p-8 rounded-md shadow-sm">
+            <h2 className="text-xl sm:text-2xl font-bold text-[#F17424] mb-6">
+              Get in <span className="text-[#19467E]">Touch</span>
+            </h2>
 
-            <form className="space-y-2 mt-4">
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className="text-sm">Name*</label>
+            <form className="space-y-4" onSubmit={handleSubmit}>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="bg-white">
                   <input
                     type="text"
-                    className="w-full border rounded px-3 py-2 focus:outline-none bg-white"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    placeholder="Name*"
+                    className="w-full p-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#F17424]"
                   />
+                  {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
                 </div>
-                <div>
-                  <label className="text-sm">Email*</label>
+
+                <div className="bg-white">
                   <input
                     type="email"
-                    className="w-full border rounded px-3 py-2 focus:outline-none bg-white"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="Email*"
+                    className="w-full p-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#F17424]"
                   />
+                  {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-4 mt-6">
-                <div>
-                  <label className="text-sm">Mobile Number*</label>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="bg-white">
                   <input
                     type="text"
-                    className="w-full border rounded px-3 py-2 focus:outline-none bg-white"
+                    name="mobile"
+                    value={formData.mobile}
+                    onChange={handleChange}
+                    placeholder="Mobile Number*"
+                    className="w-full p-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#F17424]"
                   />
+                  {errors.mobile && <p className="text-red-500 text-sm">{errors.mobile}</p>}
                 </div>
-                <div>
-                  <label className="text-sm">What Course you Looking for*</label>
+
+                <div className="bg-white">
                   <input
                     type="text"
-                    className="w-full border rounded px-3 py-2 focus:outline-none bg-white"
+                    name="course"
+                    value={formData.course}
+                    onChange={handleChange}
+                    placeholder="What Course you Looking for*"
+                    className="w-full p-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#F17424]"
                   />
+                  {errors.course && <p className="text-red-500 text-sm">{errors.course}</p>}
                 </div>
               </div>
 
-              <div className="mt-6">
-                <label className="text-sm ">Message</label>
+              <div className="bg-white">
                 <textarea
-                  rows="4"
-                  className="w-full border rounded px-3 py-2 focus:outline-none bg-white"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  placeholder="Message*"
+                  className="w-full p-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#F17424] h-32 resize-none"
                 ></textarea>
+                {errors.message && <p className="text-red-500 text-sm">{errors.message}</p>}
               </div>
 
-              <div className="flex justify-center mt-8">
-                <button
-                    type="submit"
-                    className="bg-[#19467E] text-white px-6 py-3 rounded hover:bg-blue-800"
-                >
-                    Submit
-                </button>
-                </div>
+              <button
+                type="submit"
+                className="bg-[#19467E] text-white px-6 py-3 rounded mx-auto block"
+              >
+                Submit
+              </button>
+
+              {/* Success Message */}
+              {success && (
+                <p className="text-green-600 mt-2 font-semibold">
+                  Form submitted successfully!
+                </p>
+              )}
             </form>
           </div>
         </div>
 
-        {/* MAP */}
-        <div className="mt-0 rounded overflow-hidden">
+        {/* Map */}
+        <div className="mt-12">
           <iframe
-            title="map"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.224739428644!2d76.955832!3d11.016844!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba8591c8b4c2a2d%3A0x4d8c6f4c5d2e7a1a!2sCoimbatore!5e0!3m2!1sen!2sin!4v1690000000000"
-            className="w-full h-64 "
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.771233446869!2d76.97534417581807!3d11.01708249201859!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba859b0b1440d07%3A0x6e391e171f96b2a1!2sCoimbatore!5e0!3m2!1sen!2sin!4v1698570234567!5m2!1sen!2sin"
+            width="100%"
+            height="300"
+            style={{ border: 0 }}
+            allowFullScreen=""
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
-            >
-            </iframe>
+            className="rounded"
+          ></iframe>
         </div>
       </div>
-    </div>
-    <section>
-        <Footer/>
+      <Footer/>
     </section>
+    
     </>
   );
 }

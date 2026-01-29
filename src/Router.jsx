@@ -2,7 +2,6 @@ import { Routes, Route } from "react-router-dom";
 import "./css/style.css";
 import Navbar from "./Navbar";
 import Course from "../src/Course";
-import Testimonials from "./Testimonials";
 import Blogs from "./Blogs";
 import Blogpage from "./Blogpage";
 import Footer from "./Footer";
@@ -12,6 +11,8 @@ import PythonPage from "./PythonPage";
 import DigitalPage from "./DigitalPage";
 import Home from "./Home";
 import Careerpage from "./Careerpage";
+import Careers from "./Careers";
+import Contact from "./Contact";
 
 export default function Router() {
   return (
@@ -28,7 +29,7 @@ export default function Router() {
             <>
             <Home/>
               <Course />
-              <Testimonials />
+              <Careers/>
               <Blogs />
               <Footer/>
             </>
@@ -42,6 +43,7 @@ export default function Router() {
         <Route path="/digital" element={<DigitalPage />} />
         <Route path='/careerpage' element={<Careerpage />} />
         <Route path="/blogpage" element={<Blogpage />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
     </>
   );

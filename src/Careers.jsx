@@ -2,13 +2,13 @@ import React,{ useState } from "react";
 import career from "./assets/career.png";
 import icon from "./assets/icon.png";
 import shape from  "./assets/brown-right.png"
-import quote from "./assets/quote.png";
 import cornerShape from "./assets/cloudright.png"
 import user from "./assets/user.png"
 import { FaPlay } from "react-icons/fa";
 const sampleVideo = "https://www.w3schools.com/html/mov_bbb.mp4";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import faqIllustration from "./assets/faq-illustration.png";
+import Testimonials from "./Testimonials";
 
 const testimonials = [
   {
@@ -116,7 +116,7 @@ const [openIndex, setOpenIndex] = useState(1);
         {/* RIGHT : CONTENT */}
         <div className="md:w-1/2">
 
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#1A3A6E] leading-tight">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#1A3A6E] leading-tight ">
             Why <br />
             <span className="text-[#F17424] font-bold">
               Nschool Academy?
@@ -154,16 +154,16 @@ const [openIndex, setOpenIndex] = useState(1);
       w-28
       md:w-44
       lg:w-35
-      -z-10
+      z-10
     "
   />
 
   {/* CONTENT CONTAINER */}
-  <div className="container mx-auto px-6 md:px-10">
+  <div className="container mx-auto md:px-10 mb-8 ">
     <div className="grid grid-cols-1 md:grid-cols-2 gap-x-14 gap-y-10 xl:pl-22">
 
       {[...Array(6)].map((_, idx) => (
-        <div key={idx} className="flex items-start gap-4">
+        <div key={idx} className="flex items-start gap-4 z-10">
 
           <img src={icon} alt="icon" className="w-10 h-10 mt-1 xl:w-15" />
 
@@ -183,107 +183,9 @@ const [openIndex, setOpenIndex] = useState(1);
     </div>
   </div>
 </section>
-
-<section className="relative py-28 bg-[#F8FAFC] overflow-hidden">
-      <div className="container mx-auto px-6 md:px-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-20">
-
-          {/* LEFT SIDE – CARDS */}
-          <div className="relative flex justify-center lg:justify-start">
-
-            {/* ORANGE CARD – LEFT CORNER */}
-            <div
-              className="
-                hidden lg:block
-                absolute
-                left-[-140px]
-                top-16
-                w-[300px]
-                h-[380px]
-                bg-[#F17424]
-                rounded-2xl
-                z-0
-              "
-            />
-
-            {/* BLUE CARD */}
-            <div
-              className="
-                relative
-                w-full
-                max-w-[380px]
-                bg-[#1A4B84]
-                text-white
-                p-8
-                rounded-2xl
-                shadow-xl
-                z-10
-                transition-transform
-                duration-500
-              "
-            >
-              <img src={quote} alt="quote" className="w-10 mb-4" />
-
-              <p className="text-sm leading-7 opacity-90">
-                {testimonials[index].text}
-              </p>
-
-              <div className="flex items-center gap-4 mt-6">
-                <img
-                  src={testimonials[index].avatar}
-                  alt="user"
-                  className="w-12 h-12 rounded-full object-cover"
-                />
-                <div>
-                  <p className="font-semibold text-sm">
-                    {testimonials[index].name}
-                  </p>
-                  <p className="text-xs opacity-80">
-                    {testimonials[index].role}
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* ARROWS */}
-            <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 flex gap-4">
-              <button
-                onClick={prev}
-                className="w-11 h-11 rounded-full bg-orange-100 flex items-center justify-center hover:bg-orange-200 transition shadow"
-              >
-                <FiChevronLeft className="text-xl text-blue-900" />
-              </button>
-
-              <button
-                onClick={next}
-                className="w-11 h-11 rounded-full bg-orange-100 flex items-center justify-center hover:bg-orange-200 transition shadow"
-              >
-                <FiChevronRight className="text-xl text-blue-900" />
-              </button>
-            </div>
-          </div>
-
-          {/* RIGHT SIDE – TEXT */}
-          <div className="text-center lg:text-left">
-            <p className="text-[#1A3A6E] text-2xl font-semibold">
-              Testimonials
-            </p>
-
-            <h2 className="text-4xl sm:text-5xl font-bold mt-4 leading-tight">
-              <span className="text-[#F17424]">What Students Say</span>
-              <br />
-              <span className="text-[#1A3A6E]">About Us</span>
-            </h2>
-
-            <p className="text-gray-600 mt-6 max-w-lg mx-auto lg:mx-0">
-              There are many variations of passages of Lorem Ipsum available,
-              but the majority have suffered alteration in some form.
-            </p>
-          </div>
-
-        </div>
-      </div>
-    </section>
+<section>
+  <Testimonials/>
+</section>
 
 {/* PLACEMENT STORIES */}
       <section className="bg-[#1A4B84] py-16 px-4 overflow-hidden">
@@ -378,7 +280,7 @@ const [openIndex, setOpenIndex] = useState(1);
             xl:left-[-50px]
             xl:pr-10
             w-25
-            -z-10
+            -z-0
           "
         />
       {/* Light orange/peach cloud on the right */}

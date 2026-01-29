@@ -21,7 +21,7 @@ export default function Blog() {
   ];
 
   return (
-    <section className="bg-[#F9FCFF] py-20">
+    <section className="bg-[#F9FCFF] py-10">
       <div className="container mx-auto px-6">
 
         {/* Heading */}

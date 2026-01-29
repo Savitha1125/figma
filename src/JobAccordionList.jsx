@@ -24,7 +24,7 @@ export default function JobAccordionList() {
   const [openIndex, setOpenIndex] = useState(null);
 
   return (
-    <div className="max-w-5xl mx-auto space-y-6">
+    <div className="max-w-6xl mx-auto space-y-6">
       {jobs.map((job, index) => (
         <div
           key={index}

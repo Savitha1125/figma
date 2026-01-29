@@ -1,5 +1,6 @@
 import React from "react";
-import image1 from "./assets/Maskgroup.png"; // left shape
+import { useState } from "react";
+import image1 from "./assets/Mask group.png"; // left shape
 import image2 from "./assets/brown-right.png"; // right shape
 import mern from "./assets/mern.png";
 import python from "./assets/python-logo.png";
@@ -19,9 +20,69 @@ import FAQSection from "./FAQSection";
 import VideoClip from "./VideoClip";
 import Footer from "./Footer";
 export default function FullStackPage() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    mobile: "",
+    course: "",
+  });
+
+  const [errors, setErrors] = useState({});
+  const [showPopup, setShowPopup] = useState(false);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const validate = () => {
+    const newErrors = {};
+
+    if (!formData.name.trim()) {
+      newErrors.name = "Name is required";
+    }
+
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required";
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = "Invalid email format";
+    }
+
+    if (!formData.mobile.trim()) {
+      newErrors.mobile = "Mobile number is required";
+    } else if (!/^\d{10}$/.test(formData.mobile)) {
+      newErrors.mobile = "Mobile number must be 10 digits";
+    }
+
+    if (!formData.course) {
+      newErrors.course = "Please select a course";
+    }
+
+    return newErrors;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const validationErrors = validate();
+
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+    } else {
+      setErrors({});
+      setShowPopup(true);
+
+      // optional reset
+      setFormData({
+        name: "",
+        email: "",
+        mobile: "",
+        course: "",
+      });
+    }
+  };
   return (
     <>
-      <div className="font-sans text-gray-800 xl:pt-20">
+      <div className="font-sans text-gray-800 xl:pt-20 w-full">
         {/* ================= HERO SECTION ================= */}
         <section className="relative px-8 py-16 lg:px-24 flex flex-col lg:flex-row items-start justify-between gap-12 overflow-hidden m-auto">
           {/* HERO LEFT CORNER */}
@@ -32,7 +93,7 @@ export default function FullStackPage() {
           />
 
           {/* Hero Section */}
-          <div className="max-w-2xl">
+          <div className="max-w-2xl xl:ml-8">
             <h1 className="text-4xl lg:text-5xl font-extrabold text-orange-500 mb-6">
               {" "}
               Full Stack Developer Course <br /> In Coimbatore{" "}
@@ -91,53 +152,108 @@ export default function FullStackPage() {
             </div>
           </div>
 
-          {/* Right Form */}
-          <div className="w-full max-w-md bg-white p-8 rounded-xl shadow-2xl border border-gray-100 lg:ml-auto">
-            <form className="space-x-4">
-              <div>
-                <label className="block text-sm font-bold mb-1">Name*</label>
-                <input
-                  type="text"
-                  placeholder="Enter your Full Name"
-                  className="w-full border p-2 rounded bg-gray-50 outline-none focus:ring-2 focus:ring-orange-400"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-bold mb-1">Email*</label>
-                <input
-                  type="email"
-                  placeholder="Enter your Email"
-                  className="w-full border p-2 rounded bg-gray-50 outline-none focus:ring-2 focus:ring-orange-400"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-bold mb-1">
-                  Mobile Number*
-                </label>
-                <input
-                  type="text"
-                  placeholder="Enter your Mobile Number"
-                  className="w-full border p-2 rounded bg-gray-50 outline-none focus:ring-2 focus:ring-orange-400"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-bold mb-1">
-                  What Course you looking for
-                </label>
-                <select className="w-full border p-2 rounded bg-gray-50 text-gray-400">
-                  <option>Choose your course</option>
-                </select>
-              </div>
-              <button className="w-full bg-[#1e4b8a] text-white font-bold py-3 rounded-full mt-4 hover:bg-blue-900 transition shadow-lg">
-                {" "}
-                Enroll Now
-              </button>
-            </form>
+          {/* FORM */}
+      <div className="w-full max-w-md bg-white p-8 rounded-xl shadow-2xl border border-gray-100 lg:ml-auto">
+        <form className="space-y-4" onSubmit={handleSubmit}>
+          <div>
+            <label className="block text-sm font-bold mb-1">Name*</label>
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              placeholder="Enter your Full Name"
+              className="w-full border p-2 rounded bg-gray-50 outline-none focus:ring-2 focus:ring-orange-400"
+            />
+            {errors.name && (
+              <p className="text-red-500 text-sm">{errors.name}</p>
+            )}
           </div>
-        </section>
+
+          <div>
+            <label className="block text-sm font-bold mb-1">Email*</label>
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="Enter your Email"
+              className="w-full border p-2 rounded bg-gray-50 outline-none focus:ring-2 focus:ring-orange-400"
+            />
+            {errors.email && (
+              <p className="text-red-500 text-sm">{errors.email}</p>
+            )}
+          </div>
+
+          <div>
+            <label className="block text-sm font-bold mb-1">
+              Mobile Number*
+            </label>
+            <input
+              type="text"
+              name="mobile"
+              value={formData.mobile}
+              onChange={handleChange}
+              placeholder="Enter your Mobile Number"
+              className="w-full border p-2 rounded bg-gray-50 outline-none focus:ring-2 focus:ring-orange-400"
+            />
+            {errors.mobile && (
+              <p className="text-red-500 text-sm">{errors.mobile}</p>
+            )}
+          </div>
+
+          <div>
+            <label className="block text-sm font-bold mb-1">
+              What Course you looking for*
+            </label>
+            <select
+              name="course"
+              value={formData.course}
+              onChange={handleChange}
+              className="w-full border p-2 rounded bg-gray-50"
+            >
+              <option value="">Choose your course</option>
+              <option value="Full Stack">Full Stack Development</option>
+              <option value="UI UX">UI / UX Design</option>
+              <option value="Data Science">Data Science</option>
+            </select>
+            {errors.course && (
+              <p className="text-red-500 text-sm">{errors.course}</p>
+            )}
+          </div>
+
+          <button
+            type="submit"
+            className="w-full bg-[#1e4b8a] text-white font-bold py-3 rounded-full mt-4 hover:bg-blue-900 transition shadow-lg"
+          >
+            Enroll Now
+          </button>
+        </form>
+      </div>
+
+      {/* POPUP MODAL */}
+      {showPopup && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+          <div className="bg-white p-6 rounded-lg text-center w-[90%] max-w-sm">
+            <h2 className="text-xl font-bold text-green-600 mb-2">
+              Enrollment Successful 
+            </h2>
+            <p className="text-gray-600 mb-4">
+              Our team will contact you shortly.
+            </p>
+            <button
+              onClick={() => setShowPopup(false)}
+              className="bg-[#1e4b8a] text-white px-6 py-2 rounded"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
+      </section>
 
         {/* ================= ABOUT SECTION ================= */}
-        <section className="relative px-6 py-16 lg:px-24 bg-[#F6FAFB]">
+        <section className="relative px-6 py-16 lg:px-24 bg-[#F6FAFB] lg:ml-8">
           {/* ABOUT LEFT CORNER */}
           <img
             src={image2}
