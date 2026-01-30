@@ -13,7 +13,7 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const links = [
     { name: "Home", to: "/" },
-    { name: "Courses", to: "/courses" },
+    { name: "Courses", to: "/fullstack" },
     { name: "Careers", to: "/careerpage" },
     { name: "Blog", to: "/blogpage" },
     { name: "Contact", to: "/contact" },
@@ -57,23 +57,27 @@ export default function Navbar() {
         {/* MAIN NAV + LOGO */}
         <div className="container mx-auto px-4 sm:px-6 md:px-6 py-4 flex justify-between items-center">
           {/* Logo LEFT */}
-          <div className="flex flex-col items-start">
-            <span className="text-xl sm:text-2xl font-bold text-[#f17424] pl-2 sm:pl-6 md:pl-10">Nschool</span>
-            <span className="text-md tracking-widest text-[#19467E] pl-2 sm:pl-6 md:pl-10">Academy</span>
-          </div>
+         <Link to="/">
+            <div className="flex flex-col items-start">
+              <span className="text-xl sm:text-2xl font-bold text-[#f17424] pl-2 sm:pl-6 md:pl-10">
+                Nschool
+              </span>
+              <span className="text-md tracking-widest text-[#19467E] pl-2 sm:pl-6 md:pl-10">
+                Academy
+              </span>
+            </div>
+          </Link>
           {/* Menu RIGHT */}
          <ul className="hidden md:flex gap-6 text-gray-700 text-sm sm:text-base pr-4 sm:pr-6 md:pr-10">
-      {links.map((link, idx) => (
-        <li key={idx}>
-          <Link
-            to={link.to} // Use React Router Link
-            className="hover:text-[#f17424] cursor-pointer"
-          >
-            {link.name}
-          </Link>
-        </li>
-      ))}
-    </ul>
+  {links.map((link, idx) => (
+    <li key={idx}>
+      <Link to={link.to} className="hover:text-[#f17424] cursor-pointer">
+        {link.name}
+      </Link>
+    </li>
+  ))}
+</ul>
+
 
           {/* MOBILE MENU BUTTON */}
           <div className="md:hidden">
@@ -83,18 +87,22 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* MOBILE MENU */}
-        {mobileOpen && (
-          <ul className="md:hidden flex flex-col px-4 pb-4 space-y-2">
-            {["Home", "Courses", "Careers", "Blog", "Contact"].map((item, idx) => (
-              <li key={idx} className="hover:text-[#f17424] cursor-pointer w-full pl-2">{item}</li>
-            ))}
-          </ul>
-        )}
-      </div>
-
-      
-
+       {mobileOpen && (
+  <ul className="md:hidden flex flex-col px-4 pb-4 space-y-2">
+    {links.map((link, idx) => (
+      <li key={idx} className="w-full pl-2">
+        <Link
+          to={link.to}
+          onClick={() => setMobileOpen(false)} // closes mobile menu on click
+          className="hover:text-[#f17424] cursor-pointer block py-2"
+        >
+          {link.name}
+        </Link>
+      </li>
+    ))}
+  </ul>
+)}
+</div>
 </>
   );
 }

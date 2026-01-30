@@ -3,7 +3,10 @@ import image from "./assets/image1.png"
 import image1 from "./assets/Mask group.png"
 import image2 from "./assets/Mask group (1).png"
 import image3 from "./assets/Mask group (3).png"
+import { useState } from "react";
+import { XMarkIcon } from "@heroicons/react/24/solid";
 export default function Home () {
+  const [open, setOpen] = useState(false);
   return (
       <>
     {/* Padding below fixed navbar */}
@@ -66,6 +69,72 @@ export default function Home () {
       </div>
 
     </div>
+  </div>
+</div>
+<div>
+  {/* Vertical Button */}
+  <button
+    onClick={() => setOpen(!open)}
+    className={`
+      fixed top-1/2 right-0 transform -translate-y-1/2
+      bg-[#F47422] text-white px-3 py-4 font-semibold
+      transition-all duration-300 z-100
+      ${open ? "right-80" : "right-0"}  /* moves button when form opens */
+      writing-vertical-lr text-center
+    `}
+    style={{ writingMode: "vertical-rl", textOrientation: "upright" }}
+  >
+    Quick Enquiry
+  </button>
+
+  {/* Form */}
+  <div
+    className={`
+      fixed top-1/2 right-0 transform -translate-y-1/2
+      bg-white shadow-lg p-6 rounded-lg w-80
+      transition-all duration-300 z-100
+      ${open ? "translate-x-0" : "translate-x-full"}  /* slide form from right */
+    `}
+  >
+    {/* Close Icon */}
+    <button
+      onClick={() => setOpen(false)}
+      className="absolute top-2 right-2 text-gray-500 hover:text-gray-700 font-bold text-lg"
+    >
+      &times;
+    </button>
+
+    <h3 className="font-bold text-lg text-[#19467E] mb-4">Quick Enquiry</h3>
+    <form className="flex flex-col gap-3">
+      <input
+        type="text"
+        placeholder="Enter your Full Name"
+        className="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#F47422]"
+      />
+      <input
+        type="email"
+        placeholder="Enter your Email"
+        className="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#F47422]"
+      />
+      <input
+        type="text"
+        placeholder="Enter your Mobile Number"
+        className="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#F47422]"
+      />
+      <select className="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#F47422]">
+        <option>Choose your course</option>
+        <option>Fullstack</option>
+        <option>Flutter</option>
+        <option>Python</option>
+        <option>Digital Marketing</option>
+      </select>
+      <button
+        type="submit"
+        className="bg-[#19467E] text-white font-bold py-2 rounded mt-2"
+      >
+        Request a Call Back
+      </button>
+    </form>
   </div>
 </div>
 <div className="max-w-6xl mx-auto px-4 py-12 font-opensans">
