@@ -1,9 +1,12 @@
 import { useState } from "react";
-import facebook from "./assets/Vector (2).png";
-import insta from "./assets/Vector (3).png";
-import linkedin from "./assets/Vector (4).png";
-import ytube from "./assets/Vector (5).png";
-import twitter from "./assets/Vector (1).png";
+import {
+  FaFacebookF,
+  FaInstagram,
+  FaLinkedinIn,
+  FaYoutube,
+  FaTwitter,
+} from "react-icons/fa";
+
 import whatsapp from "./assets/whatsapp-logo.png";
 import email from "./assets/Gmail_icon.png";
 import { Link } from "react-router-dom";
@@ -18,6 +21,14 @@ export default function Navbar() {
     { name: "Blog", to: "/blogpage" },
     { name: "Contact", to: "/contact" },
   ];
+const socialIcons = [
+  { icon: <FaFacebookF />, link: "https://facebook.com" },
+  { icon: <FaInstagram />, link: "https://instagram.com" },
+  { icon: <FaLinkedinIn />, link: "https://linkedin.com" },
+  { icon: <FaYoutube />, link: "https://youtube.com" },
+  { icon: <FaTwitter />, link: "https://twitter.com" },
+];
+
 
   return (
     <>
@@ -27,32 +38,51 @@ export default function Navbar() {
         <div className="max-w-6xl mx-auto py-2 flex flex-col sm:flex-row md:flex-row justify-between border-gray-300 items-center border-b">
           {/* Left: Social + Careers */}
           <div className="flex items-center gap-4">
-            <div className="flex items-center gap-2">
-              {[facebook, insta, linkedin, ytube, twitter].map((icon, idx) => (
-                <div
-                  key={idx}
-                  className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-[#f17424] transition-all duration-200 cursor-pointer"
-                >
-                  <img src={icon} alt="icon" className="w-5 h-5" />
-                </div>
-              ))}
-            </div>
+           <div className="flex items-center gap-1">
+  {socialIcons.map((item, idx) => (
+    <a
+      key={idx}
+      href={item.link}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="w-10 h-10 flex items-center justify-center rounded-full
+                 text-gray-600  hover:text-[#f17424]
+                 transition-all duration-200"
+    >
+      <span className="text-xl">{item.icon}</span>
+    </a>
+  ))}
+</div>
+
             <span className="text-gray-500">|</span>
             <Link to='/careerpage' className="text-gray-500 font-normal cursor-pointer">Careers</Link>
           </div>
 
-          {/* Right: Email + WhatsApp */}
-          <div className="flex flex-col sm:flex-row md:flex-row items-center gap-2 sm:gap-4 md:gap-5 mt-2 sm:mt-0 ml-auto">
-            <div className="flex items-center gap-2 justify-end">
-              <img src={email} alt="Email" className="w-4 h-4" />
-              <span className="text-sm sm:text-base">contact@n-school.com</span>
-            </div>
-            <div className="flex items-center gap-2 justify-end">
-              <img src={whatsapp} alt="WhatsApp" className="w-6 h-6" />
-              <span className="text-sm sm:text-base">+91 90 43 49 49 41</span>
-            </div>
-          </div>
-        </div>
+        {/* Right: Email + WhatsApp */}
+<div className="flex flex-col sm:flex-row md:flex-row items-center gap-2 sm:gap-4 md:gap-5 mt-2 sm:mt-0 ml-auto">
+
+  {/* Email */}
+  <a
+    href="mailto:contact@n-school.com"
+    className="flex items-center gap-2 justify-end hover:text-[#f17424] transition"
+  >
+    <img src={email} alt="Email" className="w-4 h-4" />
+    <span className="text-sm sm:text-base">contact@n-school.com</span>
+  </a>
+
+  {/* WhatsApp */}
+  <a
+    href="https://wa.me/919043494941"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="flex items-center gap-2 justify-end hover:text-[#25D366] transition"
+  >
+    <img src={whatsapp} alt="WhatsApp" className="w-6 h-6" />
+    <span className="text-sm sm:text-base">+91 90 43 49 49 41</span>
+  </a>
+
+</div>
+</div>
 
         {/* MAIN NAV + LOGO */}
         <div className="container mx-auto px-4 sm:px-6 md:px-6 py-4 flex justify-between items-center">

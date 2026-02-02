@@ -6,7 +6,11 @@ import girl from "./assets/girl.png";
 import Footer  from "./Footer";
 import leftImg from "./assets/Mask group.png"
 import rightImg from "./assets/Mask group (3).png"
+import { useNavigate } from "react-router-dom";
+
 export default function Blogpage() {
+  const navigate = useNavigate();
+
   const images = [
     devops,
     linkedin,
@@ -42,7 +46,7 @@ export default function Blogpage() {
           have suffered alteration in some form, by injected humour,
         </div>
       </div>
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-6xl mx-auto px-4">
         <div className="flex my-6">
           <div className="p-1 border border-black rounded-full">
             <button className="px-13 py-2 bg-[#F47422] text-white font-bold rounded-full">
@@ -53,7 +57,9 @@ export default function Blogpage() {
         <div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {images.map((img, index) => (
-                <div key={index} className="bg-white overflow-hidden shadow-lg">
+                <div key={index}
+                 onClick={() => navigate(`/blog/${index}`)}
+                 className="bg-white overflow-hidden shadow-lg">
                   <img
                     src={img}
                     alt="card"

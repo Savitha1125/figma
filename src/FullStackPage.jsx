@@ -93,12 +93,12 @@ export default function FullStackPage() {
           />
 
           {/* Hero Section */}
-          <div className="max-w-2xl xl:ml-8">
+          <div className="max-w-2xl xl:ml-0 mt-40 xl:mt-1">
             <h1 className="text-4xl lg:text-5xl font-extrabold text-orange-500 mb-6">
               {" "}
               Full Stack Developer Course <br /> In Coimbatore{" "}
             </h1>{" "}
-            <p className="text-gray-600 leading-relaxed mb-8">
+            <p className="text-gray-600 leading-relaxed mb-8 text-[20px]">
               {" "}
               Join Nschool Academy's Full Stack Developer Course in Coimbatore
               to learn how to build dynamic and responsive web applications
