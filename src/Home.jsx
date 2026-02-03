@@ -41,7 +41,7 @@ export default function Home() {
 
             {/* LEFT TEXT */}
             <div className="md:w-[100%]">
-              <h1 className="text-3xl mt-7 lg:mt-0 sm:text-4xl md:text-3xl lg:text-5xl xl:text-5xl font-semibold text-[#1A3A6E] leading-tight">
+              <h1 className="text-3xl mt-10 lg:mt-0 sm:text-4xl md:text-3xl lg:text-5xl xl:text-5xl font-semibold text-[#1A3A6E] leading-tight">
                 Get start your <span className="text-[#F17424] whitespace-nowrap">IT career</span><br />
                 development with
               </h1>
